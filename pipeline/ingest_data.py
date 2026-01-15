@@ -1,43 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
+import click
 import pandas as pd
-
-
-# ## Download sample of csv data from github repository and create pandas dataframe (100 rows)
-
-# In[3]:
-
-
-prefix = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/'
-df = pd.read_csv(prefix + 'yellow_tripdata_2021-01.csv.gz', nrows=100)
-
-
-# In[4]:
-
-
-df.head()
-
-
-# In[6]:
-
-
-df.dtypes
-
-
-# In[7]:
-
-
-df.info()
-
-
-# ## Pandas automatic parsing of datatypes wasn't correct. Create a dytype map based on given taxi data and re-create dataframe correctly
-
-# In[8]:
-
+from sqlalchemy import create_engine
+from tqdm.auto import tqdm
 
 dtype = {
     "VendorID": "Int64",
@@ -63,103 +30,49 @@ parse_dates = [
     "tpep_dropoff_datetime"
 ]
 
-df = pd.read_csv(
-    prefix + 'yellow_tripdata_2021-01.csv.gz',
-    nrows=100,
-    dtype=dtype,
-    parse_dates=parse_dates
-)
 
+@click.command()
+@click.option('--pg-user', default='root', help='PostgreSQL user')
+@click.option('--pg-pass', default='root', help='PostgreSQL password')
+@click.option('--pg-host', default='localhost', help='PostgreSQL host')
+@click.option('--pg-port', default=5432, type=int, help='PostgreSQL port')
+@click.option('--pg-db', default='ny_taxi', help='PostgreSQL database name')
+@click.option('--year', default=2021, type=int, help='Year of the data')
+@click.option('--month', default=1, type=int, help='Month of the data')
+@click.option('--target-table', default='yellow_taxi_data', help='Target table name')
+@click.option('--chunksize', default=100000, type=int, help='Chunk size for reading CSV')
 
-# In[9]:
+def run(pg_user, pg_pass, pg_host, pg_port, pg_db, year, month, target_table, chunksize):
+    """Ingest NYC taxi data into PostgreSQL database."""
+    prefix = 'https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow'
+    url = f'{prefix}/yellow_tripdata_{year}-{month:02d}.csv.gz'
 
+    engine = create_engine(f'postgresql://{pg_user}:{pg_pass}@{pg_host}:{pg_port}/{pg_db}')
 
-df.head()
+    df_iter = pd.read_csv(
+        url,
+        dtype=dtype,
+        parse_dates=parse_dates,
+        iterator=True,
+        chunksize=chunksize,
+    )
 
+    first = True
 
-# In[10]:
+    for df_chunk in tqdm(df_iter):
+        if first:
+            df_chunk.head(0).to_sql(
+                name=target_table,
+                con=engine,
+                if_exists='replace'
+            )
+            first = False
 
+        df_chunk.to_sql(
+            name=target_table,
+            con=engine,
+            if_exists='append'
+        )
 
-df.info()
-
-
-# ## sqlalchemy will transform the pandas dataframe into sql tables in postgres 
-
-# In[11]:
-
-
-get_ipython().system('uv add sqlalchemy')
-
-
-# In[12]:
-
-
-from sqlalchemy import create_engine
-engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
-
-
-# In[13]:
-
-
-get_ipython().system('uv add psycopg2-binary')
-
-
-# In[14]:
-
-
-engine = create_engine('postgresql://root:root@localhost:5432/ny_taxi')
-
-
-# In[15]:
-
-
-print(pd.io.sql.get_schema(df, name='yellow_taxi_data', con=engine))
-
-
-# ### Create schema only with the pandas dataframe into the postgres database
-
-# In[16]:
-
-
-df.head(0).to_sql(name='yellow_taxi_data', con=engine, if_exists='replace')
-
-
-# ## Add full data to postgres in smaller manageable chunks 
-
-# In[20]:
-
-
-df_iter = pd.read_csv(
-    prefix + 'yellow_tripdata_2021-01.csv.gz',
-    dtype=dtype,
-    parse_dates=parse_dates,
-    iterator=True,
-    chunksize=100000
-)
-
-
-# In[21]:
-
-
-get_ipython().system('uv add tqdm')
-
-
-# In[23]:
-
-
-from tqdm.auto import tqdm
-#Package to check the progress of code
-
-
-# In[25]:
-
-
-for df_chunk in tqdm(df_iter):
-    df_chunk.to_sql(name='yellow_taxi_data', con=engine, if_exists='append')
-
-
-# In[ ]:
-
-
-
-
+if __name__ == '__main__':
+    run()
