@@ -49,6 +49,7 @@ answer: hostname = db or postgres, port = 5432
 ## Prepare the data
 
 ```bash
+mkdir homework-1/
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-11.parquet
 wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv
 
@@ -56,6 +57,77 @@ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_z
  uv add --dev jupyter
  uv add pandas pyarrow
  uv run jupyter notebook
+
  # Completed EDA in jupyter notebook
- 
+
+ # New terminal
+ cd homework-1/
+ docker run -it --rm \
+  -e POSTGRES_USER="user" \
+  -e POSTGRES_PASSWORD="pass" \
+  -e POSTGRES_DB="green_taxi" \
+  -v green_taxi_data:/var/lib/postgresql \
+  -p 5432:5432 \
+  postgres:18
+
+  # New terminal
+  cd homework-1/
+  uv run jupyter nbconvert --to=script green_taxi.ipynb
+  mv green_taxi.py ingest_green.py
+
+  # Edited ingest_green.py to script for ingesting data to sql database
+
+  uv add click
+  uv add sqlalchemy
+  uv add psycopg2
+
+  # Try data ingestion with the localhost - edited the many problems with the script ^-^
+  uv run python ingest_green.py \
+  --pg_user=user \
+  --pg_pass=pass \
+  --pg_host=localhost \
+  --pg_port=5432 \
+  --pg_db=green_taxi \
+  --target_table=green_taxi_data
+
+  uv add --dev pgcli
+  uv run pgcli -h localhost -p 5432 -u user -d green_taxi
+  \dt # Shows the tables exist!! \o/
+  quit
+
+  touch Dockerfile
+  # Created docker ingestion file
+  #Changed psycopg2 to psycopg2-binary in pyproject.toml
+  uv lock
+  docker build -t taxi_ingest:v001 .
+
+  #********************************* Start Here tomorrow!
+  docker run -it \
+  --network=pg-network \
+  taxi_ingest:v001 \
+    --pg_user=user \
+    --pg_pass=pass \
+    --pg_host=localhost \
+    --pg_port=5432 \
+    --pg_db=green_taxi \
+    --target_table=green_taxi_data
+
+  touch docker-compose.yaml
+  # Created docker file to run postgres and pgadmin together
+
+  # Stop running containers
+  docker ps
+  docker stop $(docker ps -q)
+  docker ps
+
+  docker run -it \
+  --network=pipeline_default \
+  taxi_ingest:v001 \
+    --user=root \
+    --password=root \
+    --host=pgdatabase \
+    --port=5432 \
+    --db=ny_taxi \
+    --table=yellow_taxi_trips
+
 ```
