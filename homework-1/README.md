@@ -55,4 +55,7 @@ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_z
  uv init --python=3.13
  uv add --dev jupyter
  uv add pandas pyarrow
+ uv run jupyter notebook
+ # Completed EDA in jupyter notebook
+ 
 ```
