@@ -92,7 +92,7 @@ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_z
 
   uv add --dev pgcli
   uv run pgcli -h localhost -p 5432 -u user -d green_taxi
-  \dt # Shows the tables exist!! \o/
+  \dt # Shows the tables exist finally!! \o/
   quit
 
   touch Dockerfile
@@ -101,9 +101,9 @@ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_z
   uv lock
   docker build -t taxi_ingest:v001 .
 
-  #********************************* Start Here tomorrow!
+  # Run docker ingestion file with postgres running
   docker run -it \
-  --network=pg-network \
+  --network=host \
   taxi_ingest:v001 \
     --pg_user=user \
     --pg_pass=pass \
@@ -120,14 +120,69 @@ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_z
   docker stop $(docker ps -q)
   docker ps
 
+  docker compose up -d
+
   docker run -it \
-  --network=pipeline_default \
+  --network=homework-1_default \
   taxi_ingest:v001 \
-    --user=root \
-    --password=root \
-    --host=pgdatabase \
-    --port=5432 \
-    --db=ny_taxi \
-    --table=yellow_taxi_trips
+    --pg_user=user \
+    --pg_pass=pass \
+    --pg_host=pgdatabase \
+    --pg_port=5432 \
+    --pg_db=green_taxi \
+    --target_table=green_taxi_data
+
+  # Entered the IP address at port 8085 into a web browser and logged into pgadmin with 'admin@admin.com' and 'root'
+
+  # Registered server under name local docker, port 5432, username user, password pass
+
+  # Data ingested and ready for SQL queries!
+```
+
+## Question 3. Counting short trips
+
+```sql
+SELECT COUNT(*)
+FROM
+	green_taxi_data
+WHERE
+	lpep_pickup_datetime >= '2025-11-01' 
+	AND lpep_pickup_datetime <'2025-12-01'
+	AND trip_distance <= 1;
+```
+
+answer 8007
+
+## Question 4. Longest trip for each day
+
+```sql
+SELECT CAST(lpep_pickup_datetime AS DATE) AS date_only
+FROM
+	green_taxi_data
+WHERE
+	trip_distance = (SELECT MAX(trip_distance) FROM green_taxi_data WHERE trip_distance < 100);
+```
+
+answer 2025-11-14
+
+## Question 5. Biggest pickup zone
+
+```sql
+SELECT t."Zone",
+       SUM(g.total_amount) AS total_amount_sum
+FROM green_taxi_data g
+JOIN taxi_zone t
+  ON t."LocationID" = g."PULocationID"
+WHERE DATE(g.lpep_pickup_datetime) = '2025-11-18'
+GROUP BY t."Zone"
+ORDER BY total_amount_sum DESC
+LIMIT 1;
+```
+
+answer East Harlem North
+
+## Question 6. Largest tip
+
+```sql
 
 ```
