@@ -220,4 +220,4 @@ terraform --version
 #on linux_amd64
 ```
 
-answer terraform init, terraform plan -auto-apply, terraform rm
+answer terraform init, terraform apply -auto-approve, terraform destroy
