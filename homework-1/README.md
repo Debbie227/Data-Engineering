@@ -137,6 +137,8 @@ wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_z
   # Registered server under name local docker, port 5432, username user, password pass
 
   # Data ingested and ready for SQL queries!
+
+# ***Use docker compose down if you take a break!***
 ```
 
 ## Question 3. Counting short trips
@@ -174,8 +176,10 @@ FROM green_taxi_data g
 JOIN taxi_zone t
   ON t."LocationID" = g."PULocationID"
 WHERE DATE(g.lpep_pickup_datetime) = '2025-11-18'
-GROUP BY t."Zone"
-ORDER BY total_amount_sum DESC
+GROUP BY 
+  t."Zone"
+ORDER BY 
+  total_amount_sum DESC
 LIMIT 1;
 ```
 
@@ -184,5 +188,36 @@ answer East Harlem North
 ## Question 6. Largest tip
 
 ```sql
-
+SELECT
+	z."Zone",
+	g.tip_amount,
+	g."PULocationID",
+	g."DOLocationID"
+FROM
+	green_taxi_data g JOIN taxi_zone z
+		ON g."DOLocationID" = z."LocationID"
+WHERE
+	g."PULocationID" = 74
+ORDER BY
+	g.tip_amount DESC
+LIMIT 1;
 ```
+
+answer Yorkville West
+
+## Question 7. Terraform Workflow
+
+```bash
+# This will install terraform on the system - Can be used inside a dockerfile to run terraform without system installation
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+sudo apt update && sudo apt install terraform
+
+terraform --version
+#Terraform v1.14.3
+#on linux_amd64
+```
+
+answer terraform init, terraform plan -auto-apply, terraform rm
