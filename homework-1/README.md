@@ -218,6 +218,11 @@ sudo apt update && sudo apt install terraform
 terraform --version
 #Terraform v1.14.3
 #on linux_amd64
+terraform init      #sets up the backend
+terraform plan      #shows the configuration 
+terraform apply     #creates the resource
+yes
+terraform destroy   #deletes the resource
 ```
 
 answer terraform init, terraform apply -auto-approve, terraform destroy
