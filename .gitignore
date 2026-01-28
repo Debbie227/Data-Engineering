@@ -1,3 +1,14 @@
 *.parquet
+
+# GCP
 **/application_default_credentials.json
 **/.config/gcloud/
+workflow-orchestration/gcp-creds/
+
+
+# Service account keys
+*.json
+!package.json
+!package-lock.json
+
+

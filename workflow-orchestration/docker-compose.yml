@@ -53,6 +53,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /tmp/kestra-wd:/tmp/kestra-wd
       - ~/.config/gcloud:/root/.config/gcloud:ro
+      - ./gcp-creds:/root/.config/gcloud:ro
     environment:
       KESTRA_CONFIGURATION: |
         datasources:
