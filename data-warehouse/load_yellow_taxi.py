@@ -14,7 +14,7 @@ BUCKET_NAME = "sigma-cortex-48-bucket"
 # CREDENTIALS_FILE = "gcs.json"
 # client = storage.Client.from_service_account_json(CREDENTIALS_FILE)
 # If commented initialize client with the following
-client = storage.Client()
+client = storage.Client('sigma-cortex-486321-h6')
 
 
 BASE_URL = "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-"
