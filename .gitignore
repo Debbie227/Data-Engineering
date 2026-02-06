@@ -4,7 +4,7 @@
 **/application_default_credentials.json
 **/.config/gcloud/
 workflow-orchestration/gcp-creds/
-
+data-warehouse/gcp-creds/
 
 # Service account keys
 *.json
