@@ -115,5 +115,4 @@ SELECT count(*)
 FROM `External_Yellow_Taxi.native_yellow_taxi`;
 ```
 
-answer: 0B
-I assume it is because the table is not being filtered and no data is used to search. The table is simply displayed as is.
+answer: Estimated 0B data use. I assume it is because the table is not being filtered and no data quota is used to search. The table is simply displayed as is with no computing power needed.
