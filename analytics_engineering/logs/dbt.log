@@ -1,0 +1,113 @@
+[0m17:55:52.659203 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75a50b5e51f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75a50b15f290>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75a50ae4ec90>]}
+
+
+============================== 17:55:52.670533 | 32178432-88bc-4b96-8444-e7ed263ee956 ==============================
+[0m17:55:52.670533 [info ] [MainThread]: Running with dbt=1.11.4
+[0m17:55:52.671629 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'log_path': 'logs', 'warn_error': 'None', 'empty': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'indirect_selection': 'eager', 'fail_fast': 'False', 'static_parser': 'True', 'log_format': 'default', 'cache_selected_only': 'False', 'log_cache_events': 'False', 'use_colors': 'True', 'introspect': 'True', 'partial_parse': 'True', 'write_json': 'True', 'invocation_command': 'dbt init', 'use_experimental_parser': 'False', 'debug': 'False', 'version_check': 'True', 'quiet': 'False', 'no_print': 'None', 'profiles_dir': '/home/codespace/.dbt', 'send_anonymous_usage_stats': 'True'}
+[0m17:55:52.687785 [info ] [MainThread]: Creating dbt configuration folder at /home/codespace/.dbt
+[0m17:56:19.123994 [debug] [MainThread]: Starter project path: /workspaces/Data-Engineering/analytics_engineering/env/lib/python3.12/site-packages/dbt/include/starter_project
+[0m17:56:19.137559 [info ] [MainThread]: 
+Your new dbt project "zoomcamp_analytics" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m17:56:19.138291 [info ] [MainThread]: Setting up your profile.
+[0m18:05:09.010795 [info ] [MainThread]: Profile zoomcamp_analytics written to /home/codespace/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m18:05:09.014974 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 556.4334, "process_in_blocks": "5544", "process_kernel_time": 0.238522, "process_mem_max_rss": "106184", "process_out_blocks": "80", "process_user_time": 1.641156}
+[0m18:05:09.015684 [debug] [MainThread]: Command `dbt init` succeeded at 18:05:09.015566 after 556.43 seconds
+[0m18:05:09.016885 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75a50a5f2990>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75a50a5f2e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75a50ae28890>]}
+[0m18:05:09.018626 [debug] [MainThread]: Flushing usage events
+[0m18:05:09.390170 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m18:07:02.861819 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75d6d6c04fb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75d6d590f830>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75d6d6ce8e60>]}
+
+
+============================== 18:07:02.868390 | 623edf7e-68a0-48ff-956b-92147df2736f ==============================
+[0m18:07:02.868390 [info ] [MainThread]: Running with dbt=1.11.4
+[0m18:07:02.870135 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'target_path': 'None', 'use_experimental_parser': 'False', 'static_parser': 'True', 'use_colors': 'True', 'log_format': 'default', 'profiles_dir': '/home/codespace/.dbt', 'fail_fast': 'False', 'write_json': 'True', 'invocation_command': 'dbt debug', 'version_check': 'True', 'introspect': 'True', 'debug': 'False', 'cache_selected_only': 'False', 'partial_parse': 'True', 'warn_error': 'None', 'no_print': 'None', 'log_path': 'logs', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'log_cache_events': 'False', 'printer_width': '80'}
+[0m18:07:02.895581 [info ] [MainThread]: dbt version: 1.11.4
+[0m18:07:02.897343 [info ] [MainThread]: python version: 3.12.1
+[0m18:07:02.898658 [info ] [MainThread]: python path: /workspaces/Data-Engineering/analytics_engineering/env/bin/python
+[0m18:07:02.899903 [info ] [MainThread]: os info: Linux-6.8.0-1044-azure-x86_64-with-glibc2.39
+[0m18:07:03.005602 [info ] [MainThread]: Using profiles dir at /home/codespace/.dbt
+[0m18:07:03.006983 [info ] [MainThread]: Using profiles.yml file at /home/codespace/.dbt/profiles.yml
+[0m18:07:03.008026 [info ] [MainThread]: Using dbt_project.yml file at /workspaces/Data-Engineering/analytics_engineering/dbt_project.yml
+[0m18:07:03.009308 [info ] [MainThread]: adapter type: postgres
+[0m18:07:03.010321 [info ] [MainThread]: adapter version: 1.10.0
+[0m18:07:03.011251 [info ] [MainThread]: Configuration:
+[0m18:07:03.012782 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m18:07:03.014190 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m18:07:03.015551 [info ] [MainThread]: Required dependencies:
+[0m18:07:03.016571 [debug] [MainThread]: Executing "git --help"
+[0m18:07:03.024769 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m18:07:03.025734 [debug] [MainThread]: STDERR: "b''"
+[0m18:07:03.026415 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m18:07:03.027375 [info ] [MainThread]: Connection:
+[0m18:07:03.028248 [info ] [MainThread]:   host: localhost
+[0m18:07:03.029061 [info ] [MainThread]:   port: 5432
+[0m18:07:03.030448 [info ] [MainThread]:   user: user
+[0m18:07:03.031308 [info ] [MainThread]:   database: production
+[0m18:07:03.033910 [info ] [MainThread]:   schema: dbt_victoria_mola
+[0m18:07:03.036460 [info ] [MainThread]:   connect_timeout: 10
+[0m18:07:03.038604 [info ] [MainThread]:   role: None
+[0m18:07:03.039304 [info ] [MainThread]:   search_path: None
+[0m18:07:03.039979 [info ] [MainThread]:   keepalives_idle: 0
+[0m18:07:03.041200 [info ] [MainThread]:   sslmode: None
+[0m18:07:03.043273 [info ] [MainThread]:   sslcert: None
+[0m18:07:03.044194 [info ] [MainThread]:   sslkey: None
+[0m18:07:03.045148 [info ] [MainThread]:   sslrootcert: None
+[0m18:07:03.046145 [info ] [MainThread]:   application_name: dbt
+[0m18:07:03.047049 [info ] [MainThread]:   retries: 1
+[0m18:07:03.048186 [info ] [MainThread]: Registered adapter: postgres=1.10.0
+[0m18:07:03.215409 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m18:07:03.241504 [debug] [MainThread]: Using postgres connection "debug"
+[0m18:07:03.242155 [debug] [MainThread]: On debug: select 1 as id
+[0m18:07:03.242655 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m18:07:03.245049 [debug] [MainThread]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+[0m18:07:03.246282 [debug] [MainThread]: Postgres adapter: Error running SQL: select 1 as id
+[0m18:07:03.246767 [debug] [MainThread]: Postgres adapter: Rolling back transaction.
+[0m18:07:03.247291 [debug] [MainThread]: On debug: No close available on handle
+[0m18:07:03.247759 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m18:07:03.248388 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m18:07:03.248907 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </workspaces/Data-Engineering/analytics_engineering/dbt_project.yml> not found
+
+[0m18:07:03.249492 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  connection to server at "localhost" (::1), port 5432 failed: Connection refused
+  	Is the server running on that host and accepting TCP/IP connections?
+  connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+  	Is the server running on that host and accepting TCP/IP connections?
+  
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m18:07:03.250796 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.5076072, "process_in_blocks": "392", "process_kernel_time": 0.339525, "process_mem_max_rss": "112788", "process_out_blocks": "32", "process_user_time": 1.787442}
+[0m18:07:03.251472 [debug] [MainThread]: Command `dbt debug` failed at 18:07:03.251357 after 0.51 seconds
+[0m18:07:03.251943 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m18:07:03.252476 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75d6d4a31190>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75d6d495eff0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75d6d564f890>]}
+[0m18:07:03.253040 [debug] [MainThread]: Flushing usage events
+[0m18:07:03.615540 [debug] [MainThread]: An error was encountered while trying to flush usage events
