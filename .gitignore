@@ -5,6 +5,8 @@
 **/.config/gcloud/
 workflow-orchestration/gcp-creds/
 data-warehouse/gcp-creds/
+analytics_engineering/gcp-creds/
+analytics_engineering/env
 
 # Service account keys
 *.json
