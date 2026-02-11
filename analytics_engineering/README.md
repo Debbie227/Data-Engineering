@@ -1,4 +1,4 @@
-## Module 4 Homework
+## Module 4 Notes
 
 ```bash
 cd analytics_engineering
@@ -27,10 +27,21 @@ dbt debug
 
 # Of course it can't connect to GCP...I should know that by now
 
+# Create docker compose file to use dbt-bigquery and GCP creds along with already started project - Moved profile.yml to directory
 docker compose up -d
 docker compose exec dbt bash
 
-dbt debug
+dbt debug     # It works!
 
+# Opened Kestra in workflow orchestration and uploaded 2019 data to gcp database
 
+cd models
+mkdir staging
+cd staging
+touch sources.yml
+touch green_tripdata.sql
+
+dbt show green_tripdata.sql # Show a preview of the table and test that everything works properly
+
+touch stg_green_tripdata.sql
 ```

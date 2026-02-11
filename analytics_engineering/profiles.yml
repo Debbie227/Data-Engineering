@@ -4,7 +4,7 @@ taxi_rides_ny:
       dataset: zoomcamp
       job_execution_timeout_seconds: 300
       job_retries: 1
-      location: US
+      location: us-west3
       method: oauth
       priority: interactive
       project: vital-plating-485118-d8

@@ -6,5 +6,7 @@ services:
       - ./:/usr/app
       - ./profiles.yml:/root/.dbt/profiles.yml
       - ./gcp-creds:/root/.config/gcloud:ro
-    working_dir: /usr/app
+    working_dir: /usr/app/taxi_rides_ny
+    environment:
+      DBT_PROFILES_DIR: /usr/app
     entrypoint: ["sleep", "infinity"]

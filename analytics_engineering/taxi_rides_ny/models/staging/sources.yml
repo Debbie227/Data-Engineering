@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw_data
+    description: "Raw data from sources for NYC taxi rides"
+    database: vital-plating-485118-d8
+    schema: zoomcamp
+    tables: 
+      - name: green_tripdata
+      - name: yellow_tripdata
