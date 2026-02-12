@@ -41,7 +41,7 @@ cd staging
 touch sources.yml
 touch green_tripdata.sql
 
-dbt show green_tripdata.sql # Show a preview of the table and test that everything works properly
+dbt show --select green_tripdata.sql # Show a preview of the table and test that everything works properly
 
-touch stg_green_tripdata.sql
+# Made about a million other sql files from the video in various folders
 ```

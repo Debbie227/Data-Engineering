@@ -13,6 +13,7 @@
       store_and_fwd_flag,
       cast(passenger_count as integer) as passenger_count,
       cast(trip_distance as numeric) as trip_distance,
+      1 as trip_type, -- yellow taxi trip can only be street-hailing, so we can hardcode this value to 1
       
       -- payment info
       cast(fare_amount as numeric) as fare_amount,
@@ -20,6 +21,7 @@
       cast(mta_tax as numeric) as mta_tax,
       cast(tip_amount as numeric) as tip_amount,
       cast(tolls_amount as numeric) as tolls_amount,
+      0 as ehail_fee, -- yellow taxi trip does not have ehail fee, so we can hardcode this value to 0
       cast(improvement_surcharge as numeric) as improvement_surcharge,
       cast(total_amount as numeric) as total_amount,
       cast(payment_type as integer) as payment_type,
