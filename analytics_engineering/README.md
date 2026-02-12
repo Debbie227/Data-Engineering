@@ -44,4 +44,11 @@ touch green_tripdata.sql
 dbt show --select green_tripdata.sql # Show a preview of the table and test that everything works properly
 
 # Made about a million other sql files from the video in various folders
+
+dbt run # Created tables and views of sql
+
+wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv #Downloaded zone lookup csv to seeds folder
+dbt seed
+
+# Created a macro for reusable code
 ```
