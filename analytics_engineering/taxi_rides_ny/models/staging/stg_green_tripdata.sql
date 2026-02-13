@@ -31,4 +31,4 @@
 
   from {{ source('raw_data','green_tripdata') }}
 
-  where VendorID is not null 
+  where VendorID is not null and lpep_pickup_datetime < '2021-01-01'

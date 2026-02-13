@@ -28,4 +28,5 @@
         cast(congestion_surcharge as numeric) as congestion_surcharge
 
   from {{ source('raw_data','yellow_tripdata') }}
-  where VendorID is not null 
+
+  where VendorID is not null and tpep_pickup_datetime < '2021-01-01'
