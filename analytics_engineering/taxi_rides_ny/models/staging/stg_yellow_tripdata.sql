@@ -1,9 +1,9 @@
   select
       -- identifiers
-      cast(VendorID as integer) as vendorid,
-      cast(RateCodeID as integer) as ratecodeid,
-      cast(PULocationID as integer) as pickup_locationid,
-      cast(DOLocationID as integer) as dropoff_locationid,
+      cast(VendorID as integer) as vendor_id,
+      cast(RateCodeID as integer) as rate_code_id,
+      cast(PULocationID as integer) as pickup_location_id,
+      cast(DOLocationID as integer) as dropoff_location_id,
       
       -- timestamps
       cast(tpep_pickup_datetime as timestamp) as pickup_datetime,

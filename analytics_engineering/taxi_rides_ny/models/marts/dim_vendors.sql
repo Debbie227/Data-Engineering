@@ -5,8 +5,8 @@ with trips_unioned as (
 
 vendors as
 (
-    select distinct vendorid,
-    {{ get_vendor_names('vendorid') }} as vendor_name
+    select distinct vendor_id,
+    {{ get_vendor_names('vendor_id') }} as vendor_name
     from trips_unioned
 )
 
