@@ -7,8 +7,8 @@ cd analytics engineering
 docker compose up -d
 docker compose exec dbt bash
 
-dbt deps
-dbt seed
+dbt deps        # Added dependancies from packages file
+dbt seed        # Added payment type lookup seed to GCP
 
 # Fixed differences in variable names and added service type to int_trips_unioned
 ```
@@ -78,3 +78,5 @@ AND service_type = 'Green'
 Answer: 384624
 
 ## Question 6. Build a Staging Model for FHV Data
+
+Too sick to do all that work for one question - Going to submit answers and take a nap
