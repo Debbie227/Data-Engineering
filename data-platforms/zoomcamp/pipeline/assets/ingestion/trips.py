@@ -33,10 +33,7 @@ materialization:
 # TODO: Define output columns (names + types) for metadata, lineage, and quality checks.
 # Tip: mark stable identifiers as `primary_key: true` if you plan to use `merge` later.
 # Docs: https://getbruin.com/docs/bruin/assets/columns
-columns:
-  - name: TODO_col1
-    type: TODO_type
-    description: TODO
+
 
 @bruin"""
 
