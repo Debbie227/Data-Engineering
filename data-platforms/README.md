@@ -23,11 +23,15 @@ bruin init zoomcamp
 
 cd zoomcamp
 
-# created trips.py to ingest data
- bruin run --start-date 2025-02-02 --end-date 2025-02-03 ./pipeline/assets/ingestion/trips.py
+# created trips.py to ingest data - Video used cursor to write the code but doesn't show it
+bruin run --start-date 2025-02-02 --end-date 2025-02-03 ./pipeline/assets/ingestion/trips.py
 # added pandas and requests to requirements so Bruin's uv can install and use them
 # added table registration to the function so a duckdb table is created for the data to ingest to
 # Added duckdb to requrements
 
 # Still doesn't work
+
+bruin run ./pipeline/assets/ingestion/payment_lookup.assest.yml
+
+# Updated trips.sql with what was shown, but everything else was created by cursor again 
 ```
