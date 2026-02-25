@@ -4,6 +4,13 @@
 mkdir spark && cd $_
 touch README.md
 
-docker run -it apache/spark-py /opt/spark/bin/pyspark
+docker run -it --rm apache/spark-py /opt/spark/bin/pyspark 
 
+wget https://github.com/DataTalksClub/nyc-tlc-data/releases/download/fhvhv/fhvhv_tripdata_2021-01.csv.gz
+gzip -dc fhvhv_tripdata_2021-01.csv.gz
+```
+
+```python
+spark = SparkSession.builder .master("local[*]") .appName('test') .getOrCreate()
+df = spark.read .option("header", "true") .csv('fhvhv_tripdata_2021-01.csv')
 ```
