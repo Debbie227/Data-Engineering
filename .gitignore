@@ -13,7 +13,7 @@ analytics_engineering/env
 !package.json
 !package-lock.json
 
-
+/workspaces/Data-Engineering/spark/data/fhvhv_tripdata_2021-01.csv.gz
 
 .bruin.yml
 logs/runs
